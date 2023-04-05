@@ -41,7 +41,44 @@ In this assignment I was tasked with creating a library for mathematical functio
 ### Running Program
 I ran my test code in an Ubuntu operation system, but the use of the pragram is translatable to a Windows environment. In order to run the test one will need a functioning version of Python with unittesting module available for use. One must also have the dependancies of the file in order all the python files should be in one direcory. 
 
-To run the code code type python3 -m unittest 
+To run the code type "python3 -m unittest" into terminal 
+
+> nhlonipho@nhlonipho-VirtualBox:~$ cd Documents\\...\src
+>nhlonipho@nhlonipho-VirtualBox:~$\...\src>python3 -m unittest
+> ......
+> Enter a # for checkSquare() 
+>Enter a # for checkSquare()
+> Enter a # for checkSquare().
+> Enter a # for find_next_Fibonacci()
+> Enter a # for find_next_Fibonacci().
+> 
+> Ran 8 tests in 0.006s
+> 
+>OK
+
+
+If on a windows system type "python -m unittest":
+
+	Microsoft Windows [Version 10.0.22621.1413]
+	(c) Microsoft Corporation. All rights reserved.
+	C:\Users\nkmar>cd ./C:\Users\...\src
+	C:\Users\...\src>python -m unittest
+	......
+	Enter a # for checkSquare() 
+	Enter a # for checkSquare()
+	Enter a # for checkSquare().
+	Enter a # for find_next_Fibonacci()
+	Enter a # for find_next_Fibonacci().
+	 
+	Ran 8 tests in 0.006s
+	 
+	OK
+
+### Modularity
+### CheckList
+ - [x] Are there any repeated code segments
+ - [x] Do any function have multiple
+
 ***
 ## Testing
 The test code makes use of the unittest module to test all of the production code. I chose to use this module because it allowed to use a number of enhanced assertion functions, delegating the assertion to this module allowed for a higher level simplicity and modularity, and resulted in the overall reduction of the total code.
