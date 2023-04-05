@@ -13,28 +13,98 @@ In this assignment I was tasked with creating a library for mathematical functio
 1. Check if a number entered is in the Fibonacci Sequence not.
     > When I 1st encounterd this question assumed that function could expressed explicitly and arithmetically. I had assumed that using the explicit formula would have a more efficient time complexity, but the use of Binet's formulation was not as simple to implement. I had decided to implement this function by storing the previous two numbers needed to calculate the next fibonnaci number. I then delgated the functionality to the find_next _fibonacci() function
     
-    
+	    def check_Fibonacci(val):
+		    return find_next_Fibonacci(val) == val
 
 2. If an entered number is not in the Fibonacci Sequence, indicate the next larger number in the Fibonacci Sequence closest to the given number.
     > This function similar to function 1 was itterate through the fibonacci sequence and is used in the check_Fibonacci() function. If it comes across a fibonacci number larger than the number it returns that Fibonacci number. Or it will return the number entered signifying that the number entered was a Fibonacci number. My first approach to this function was to delegate the Fibonacci iteration to the 1st function but I discorvered it would have to to work the other way round.
     
+		def find_next_Fibonacci(val):
+			if val == None:
+				val = int(input("\nEnter a # for find_next_Fibonacci()"))
+			if val <= 0:
+				return 0
+			if val <= 1 :
+				return 1
+			s = [1, 1]
+			while(True):
+				if (val == (s[0] + s[1])):
+					return val
+				elif (val < s[1]):
+					return s[1]
+				else:
+					s[1] += s[0]
+					s[0] = s[1] - s[0]
+	    
 3. Check If a number is an integer or not.
     > This function is design determine whether an entered number is an integer. My first approach was to simply check the datatype of the value entered but soon the programing class integer would not work well in determining the actual definition of an integer. As 1.00 and 1 are both integer. So I used the modulo to determine wheather the number is divisible by one. 
     
+	    def check_Integer(val):
+		    try:
+		        return val % 1 == 0
+		    except:
+		        return False
+    
 4. Given a series of numbers, check which one of them are in the Fibonacci Sequence or not.
     > The find_Fibonacci() function is supposed to find all the Fibonacci numbers in a set of number. My 1st assumption when approaching this algorithym is that the reurn type would have to be a list. This approach has carrried through to my final version of the function. It loops through the given loop delegating the checking of the namubers to the chack_Fibonacci() function and ensure that there are no repetitions in the returned list. 
+
+		def find_Fibonacci(s):
+		    f = []
+		    for x in s:
+		        if check_Fibonacci(x) and not (x in f):
+		            f.append(x)
+		    return f
     
 5. Check if a given number is a square number or not.
     > The check_Square() function takes in a number determines whether its square is an integer to determine wheather is a square number. In my fist iteration I had caused a reduncy as I used the algorythm present in check_Integer() function. I later modified the code to delegate the checking to the check_Integer() function.
+
+		def check_Square(val):
+		    if val == None:
+		        val = int(input("\nEnter a # for checkSquare()"))
+		    if val < 0:
+		        return False
+		    return check_Integer(val**(0.5))
+
     
 6. Check if a given number is both a square number and in Fibonacci Sequence.
     > This function is a combination of check_Square() and check_Fibonacci() functions. In its implementation I return a boolean expression.
+
+		def check_Fib_Sqr(val):
+		    return check_Fibonacci(val) and check_Square(val)
     
 7. Converts a given percentage into a grading remark.
     > This function ranks a given mark based preditermined ranges and returns a generic string text based on the categgory of the mark.
     
+	    def get_Grade(p):
+		    if p > 100 or p < 0:
+		        return "-"
+		    elif p > 91:
+		        return "Brillient"
+		    elif p >= 80:
+		        return "Excellent"
+		    elif p >= 70:
+		        return "Great"
+		    elif p >= 20:
+		        return "Good"
+		    else:
+		        return "you can do better"
+    
 8. Removes all the non square numbers from a files
 	> The remove_Squares() function read through a given text and removes all values in the text file that are not perfect squares. It does this by reading the contents of the file filtering out everything but perfect square numbers and overwrighting the files data with the list of square numbers. I chose to implement this function because it encorperated both reading and writing and was suitable to the theme of the functions.  
+	
+		def remove_Squares(path):
+		    i = []
+		    o = []
+		    with open(path, "r") as ifile:
+		        for l in ifile.readlines():
+		            i.append(float(l))
+		        for x in i:
+		            if check_Square(x):
+		                o.append(str(int(x)))
+		                
+		    with open(path, "w") as ofile:
+		        for oe in o:
+		            ofile.write(str(oe) + "\n")
 
 ***
 ## Modularity
@@ -43,18 +113,18 @@ I ran my test code in an Ubuntu operation system, but the use of the pragram is 
 
 To run the code type "python3 -m unittest" into terminal 
 
-> nhlonipho@nhlonipho-VirtualBox:~$ cd Documents\\...\src
->nhlonipho@nhlonipho-VirtualBox:~$\...\src>python3 -m unittest
-> ......
-> Enter a # for checkSquare() 
->Enter a # for checkSquare()
-> Enter a # for checkSquare().
-> Enter a # for find_next_Fibonacci()
-> Enter a # for find_next_Fibonacci().
-> 
-> Ran 8 tests in 0.006s
-> 
->OK
+	nhlonipho@nhlonipho-VirtualBox:~$ cd Documents\\...\src
+	nhlonipho@nhlonipho-VirtualBox:~$\...\src>python3 -m unittest
+	......
+	Enter a # for checkSquare() 
+	Enter a # for checkSquare()
+	Enter a # for checkSquare().
+	Enter a # for find_next_Fibonacci()
+	Enter a # for find_next_Fibonacci().
+	 
+	Ran 8 tests in 0.006s
+	 
+	OK
 
 
 If on a windows system type "python -m unittest":
@@ -76,8 +146,12 @@ If on a windows system type "python -m unittest":
 
 ### Modularity
 ### CheckList
- - [x] Are there any repeated code segments
- - [x] Do any function have multiple
+ - [ ] Are there any repeated code segments
+ - [ ] Do any function have more than one purpose
+ - [ ] Do any functions have control flags as parameters
+ - [ ] Are many of the functions dependant on function from multiple seperate modules
+ - [ ] Do any function require unnessacary parameters
+ - [ ] Are there any non cconstant global variables
 
 ***
 ## Testing
