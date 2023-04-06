@@ -548,7 +548,9 @@ In my versions, I had no problem with my test code. This is because I integrated
 	(END)
 ***
 ## Ethics
-The production of a math module can have some ethical concernes and in a few scenarios, the unethical developement of the program could lead to desasters. 
+The production of a math module can have some ethical concernes and in a few scenarios, the unethical developement of the program could lead to desasters. If proper testing was not completed the system might fail when in the user's possession. This a physical and proffessional ethical concern. This could lead to a loss pecuniary value and reputation of both developer and user. This could also indirectly psychological effects on the user such as stress and worry due to delay, loss of productivity, and/or a damaged reputation. For example if the functions in this module was one used in a life support system and an error in the code caused an incorrect output the developer might indirectly be responsible for the health complication of the patients using that life support system. 
 ***
 ## Reflection
-This assignment helped in developing my familiarity with version control
+This assignment helped in developing my familiarity with version control. Getting to use white box testing made my undersanding of End of File errors more proficient and how simulating input can complicate the production code despite it not depend on the test code where input simulation occurs. The project also improve in assessing where to implement whic kind of testing. It showed me the usefulnes of git commits and version control as it is easier to roll back semantic errors.
+
+The project definately assisted in developing fundemental skills for any future work in software developement. A few ways I would improve my code in the future would be to clean the menu code in the main function and to incorperate multiple testing methods for functions like the find_next_Fibonacci() function. 
