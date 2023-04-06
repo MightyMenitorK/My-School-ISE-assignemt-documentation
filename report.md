@@ -109,55 +109,57 @@ In this assignment I was tasked with creating a library for mathematical functio
 ***
 ## Modularity
 ### Running Program
+
 I ran my test code in an Ubuntu operation system, but the use of the pragram is translatable to a Windows environment. In order to run the test one will need a functioning version of Python with unittesting module available for use. One must also have the dependancies of the file in order all the python files should be in one direcory. 
 
-To run the code type "python3 -m unittest" into terminal 
+To run the code type "python3 mathlib.py" into terminal 
 
 	nhlonipho@nhlonipho-VirtualBox:~$ cd Documents\\...\src
-	nhlonipho@nhlonipho-VirtualBox:~$\...\src>python3 -m unittest
-	......
-	Enter a # for checkSquare() 
-	Enter a # for checkSquare()
-	Enter a # for checkSquare().
-	Enter a # for find_next_Fibonacci()
-	Enter a # for find_next_Fibonacci().
-	 
-	Ran 8 tests in 0.006s
-	 
-	OK
+	nhlonipho@nhlonipho-VirtualBox:~$\...\src>python3 mathlib.py
+	a(#) = check_Fibonacci(#)
+	b() = find_next_Fibonacci(#)
+	c(#) = check_Integer(#)
+	d[#,...] = find_Fibonacci([#,...])
+	e = check_Square()
+	f(#) = check_Fib_Sqr(#)
+	g(#) = get_Grade(#)
+	q = quit
+	>
 
 
-If on a windows system type "python -m unittest":
+If on a windows system type "python mathlib.py":
 
 	Microsoft Windows [Version 10.0.22621.1413]
 	(c) Microsoft Corporation. All rights reserved.
 	C:\Users\nkmar>cd ./C:\Users\...\src
-	C:\Users\...\src>python -m unittest
-	......
-	Enter a # for checkSquare() 
-	Enter a # for checkSquare()
-	Enter a # for checkSquare().
-	Enter a # for find_next_Fibonacci()
-	Enter a # for find_next_Fibonacci().
-	 
-	Ran 8 tests in 0.006s
-	 
-	OK
+	C:\Users\...\src>python mathlib.py
+	a(#) = check_Fibonacci(#)
+	b() = find_next_Fibonacci(#)
+	c(#) = check_Integer(#)
+	d[#,...] = find_Fibonacci([#,...])
+	e = check_Square()
+	f(#) = check_Fib_Sqr(#)
+	g(#) = get_Grade(#)
+	q = quit
+	>
+To use the program enter the desired function with its correct structure. The program will then display the output of function select.
 
-### Modularity
-### CheckList
- - [ ] Are there any repeated code segments
- - [ ] Do any function have more than one purpose
- - [ ] Do any functions have control flags as parameters
- - [ ] Are many of the functions dependant on function from multiple seperate modules
- - [ ] Do any function require unnessacary parameters
- - [ ] Are there any non cconstant global variables
+#### CheckList
+ - [x] Aren't any repeated code segments
+ - [x] Functions don't have more than one purpose
+ - [x] Functions don't have control flags as parameters
+ - [x] Few functions are dependant on functions from multiple seperate modules
+ - [x] Functions do not require unnessacary parameters
+ - [x] There are not any non constant global variables
+
+In the implementation of my code I made sure avoid the flaws written in my checklist. I made use of the funcionality that I had defined in other functions to avoid rudundency and made sure that all my functions had singular functionality. I also made sure that made sure my functions didn't have unessacary parameters or global variables, keeping the maximum parameters below three. Due my code on consisting of two modules coupling was kept to low. This also increased the cohesion of the code.
 
 ***
 ## Testing
 The test code makes use of the unittest module to test all of the production code. I chose to use this module because it allowed to use a number of enhanced assertion functions, delegating the assertion to this module allowed for a higher level simplicity and modularity, and resulted in the overall reduction of the total code.
 ### White Box Testing
 #### check_Square
+This is a simple function that mainly consists of one flow control statement. That being the if statement. This simplicity and use of white box compatible control flows makes it a suitable function to test with white box testing.
 <table>
   <thead>
     <tr>
@@ -181,10 +183,12 @@ The test code makes use of the unittest module to test all of the production cod
 
 
 #### find_next_Fibonacci
+This is suitable for white box testing because it makes use of while loops and if statements, which means that white box test cases can work well on this particular function. This function can also accept input from the input stream which is another reason why it useful to white box test fixtures.
 |Path|Test Data|Result|
 |--|--|--|
 |Enters if| 2 | 2|
 |Doesn't enter if| 9 | 13|
+
 ***
 
 ### Black Box Testing
@@ -230,6 +234,16 @@ I used Equivalence Partitioning to  test this function. I chose to use this beca
 |val is square number & val > 0|4|True|
 |val is not square number & val > 0|3|False|
 |val < 0|-2|False|
+
+#### remove_Squares
+
+For the remove_Squares function, the function takes in a set and returns the set of remove_Squares that intersect with the set given. This means that it suitable to use Equivilence Partitioning as a test method 
+
+|Category|I|O|
+|--|--|--|
+|set s ∩ ∅|[]|[]|
+|set s doesn't ∩ with set Square #|[10, 8, 7, 6, 5]|[]|
+|set s ∩ with set Square #|[10, 4, 9, 6, 16]|[4, 9, 16]
 
 #### getGrade
 I used Boundary Value analysis to assess this function. I chose this method of testing because the function returns based on percentage ranges that form boundaries with each other.
@@ -281,12 +295,260 @@ I used Boundary Value analysis to assess this function. I chose this method of t
 
 ***
 ## Test implementation and execution
+### Running Program
 
+I ran my test code in an Ubuntu operation system, but the use of the pragram is translatable to a Windows environment. In order to run the test one will need a functioning version of Python with unittesting module available for use. One must also have the dependancies of the file in order all the python files should be in one direcory. 
+
+To run the code type "python3 -m unittest" into terminal 
+
+	nhlonipho@nhlonipho-VirtualBox:~$ cd Documents\\...\src
+	nhlonipho@nhlonipho-VirtualBox:~$\...\src>python3 -m unittest
+	......
+	Enter a # for checkSquare() 
+	Enter a # for checkSquare()
+	Enter a # for checkSquare().
+	Enter a # for find_next_Fibonacci()
+	Enter a # for find_next_Fibonacci().
+	----------------------------------------------------------------------
+	Ran 8 tests in 0.006s
+	 
+	OK
+
+
+If on a windows system type "python -m unittest":
+
+	Microsoft Windows [Version 10.0.22621.1413]
+	(c) Microsoft Corporation. All rights reserved.
+	C:\Users\nkmar>cd ./C:\Users\...\src
+	C:\Users\...\src>python -m unittest
+	......
+	Enter a # for checkSquare() 
+	Enter a # for checkSquare()
+	Enter a # for checkSquare().
+	Enter a # for find_next_Fibonacci()
+	Enter a # for find_next_Fibonacci().
+	----------------------------------------------------------------------
+	Ran 8 tests in 0.006s
+	 
+	OK
+### Test Results
+In my versions, I had no problem with my test code. This is because I integrated my function into my test code sequencially. The use of the code in examples; this helped in testing th basic functionality of the function. For each of the 8 test, all eight were successful. After complete a particular function I would still come back to revise my code based on the new code added in other function. This allowed to monitor the overall modularity of the code. My improvements to the code did cause any change in the tests. I had also change my test cases to purpusefully cause an error, this was to verify whether the unittesting module was engaging the code properly.
+
+|Module name|BB test design(EP)|BB test design ( BVA)|WB test design|EP test code (implement ed/ run)|BVA test code (implemented /run)|White-Box testing (implemente d/run)|
+|--|--|--|--|--|--|--|
+|check_Fibonacci|done|not|not|done|not|not|
+|find_next_Fibonacci|not|not|done|not|not|done|
+|check_Integer|done|not|not|done|not|not|
+|test_EP_find_Fibonacci|done|not|not|done|not|not|
+|check_Square|not|not|done|not|not|done|
+|check_Fib_Sq|done|not|not|done|not|not|
+|check_Square|not|done|not|not|done|not|
+|remove_Squares|done|not|not|done|not|not|
 ***
 ## Version Control
+### Commit logs
+	0000000000000000000000000000000000000000 ce4a6bf6a51783765d603700ea62ee0daed6459d Nhlonipho <nkmarwala@gmail.com> 1679404980 +0400	commit (initial): initial commit
+	ce4a6bf6a51783765d603700ea62ee0daed6459d 3398c8aa370632b0ea1da39f1984cbb2f2e58311 Nhlonipho <nkmarwala@gmail.com> 1679408728 +0400	commit: succesfully implemented functions {a, b, and c}
+	3398c8aa370632b0ea1da39f1984cbb2f2e58311 6824357177f9fd06dc1006d9a7d0c154d1f62436 Nhlonipho <nkmarwala@gmail.com> 1679411978 +0400	commit: succesfully implemented functions {d, e, f}
+	6824357177f9fd06dc1006d9a7d0c154d1f62436 552aab75245e5f64459d6900e38a308024aa0001 Nhlonipho <nkmarwala@gmail.com> 1680450860 +0400	commit: get grade function completed
+	552aab75245e5f64459d6900e38a308024aa0001 3808b66458f014189efb77f2060b38698df01199 Nhlonipho <nkmarwala@gmail.com> 1680452278 +0400	commit: tting up loose ends
+	3808b66458f014189efb77f2060b38698df01199 b429f8475745531ce1f3719630f7fc0d9a5f9a34 Nhlonipho <nkmarwala@gmail.com> 1680452913 +0400	commit: making comments
+	b429f8475745531ce1f3719630f7fc0d9a5f9a34 b429f8475745531ce1f3719630f7fc0d9a5f9a34 Nhlonipho <nkmarwala@gmail.com> 1680601074 +0400	checkout: moving from master to EPtesting
+	b429f8475745531ce1f3719630f7fc0d9a5f9a34 8007268f3e2a05dcf129059499b0632dd7716c1f Nhlonipho <nkmarwala@gmail.com> 1680624391 +0400	commit: Equivilance Partitioning testing complete
+	8007268f3e2a05dcf129059499b0632dd7716c1f b429f8475745531ce1f3719630f7fc0d9a5f9a34 Nhlonipho <nkmarwala@gmail.com> 1680624795 +0400	checkout: moving from EPtesting to master
+	b429f8475745531ce1f3719630f7fc0d9a5f9a34 f541affa7746e53d4f7441387ffd8d1039f3b215 Nhlonipho <nkmarwala@gmail.com> 1680629398 +0400	commit: edits
+	f541affa7746e53d4f7441387ffd8d1039f3b215 33afe75cc63e560af4af007392110fed9776d057 Nhlonipho <nkmarwala@gmail.com> 1680629645 +0400	commit: creating test file
+	33afe75cc63e560af4af007392110fed9776d057 8007268f3e2a05dcf129059499b0632dd7716c1f Nhlonipho <nkmarwala@gmail.com> 1680629653 +0400	checkout: moving from master to EPtesting
+	8007268f3e2a05dcf129059499b0632dd7716c1f 33afe75cc63e560af4af007392110fed9776d057 Nhlonipho <nkmarwala@gmail.com> 1680630635 +0400	checkout: moving from EPtesting to master
+	33afe75cc63e560af4af007392110fed9776d057 717d9a67a595655165a32b614bbd38fd5f07c3b4 Nhlonipho <nkmarwala@gmail.com> 1680642593 +0400	commit: White Box testing completed
+	717d9a67a595655165a32b614bbd38fd5f07c3b4 2b81d7fdd9e1a0dfd20c73b74c7cdcef61c1563e Nhlonipho <nkmarwala@gmail.com> 1680643115 +0400	commit (merge): merge fixxes for EPtesting and WBtesting
+	2b81d7fdd9e1a0dfd20c73b74c7cdcef61c1563e 8007268f3e2a05dcf129059499b0632dd7716c1f Nhlonipho <nkmarwala@gmail.com> 1680643163 +0400	checkout: moving from master to EPtesting
+	8007268f3e2a05dcf129059499b0632dd7716c1f 2b81d7fdd9e1a0dfd20c73b74c7cdcef61c1563e Nhlonipho <nkmarwala@gmail.com> 1680643342 +0400	checkout: moving from EPtesting to master
+	2b81d7fdd9e1a0dfd20c73b74c7cdcef61c1563e de25ec12bb7a1c04e5d5f85abf42bde80b0987f6 Nhlonipho <nkmarwala@gmail.com> 1680644358 +0400	commit: making running proccess clearer
+	de25ec12bb7a1c04e5d5f85abf42bde80b0987f6 3e38c9144a84fbd06b099c14ee9a76ea476b573a Nhlonipho <nkmarwala@gmail.com> 1680644558 +0400	commit: finalising EP & WB
+	3e38c9144a84fbd06b099c14ee9a76ea476b573a b429f8475745531ce1f3719630f7fc0d9a5f9a34 Nhlonipho <nkmarwala@gmail.com> 1680644620 +0400	checkout: moving from master to BVAtesting
+	b429f8475745531ce1f3719630f7fc0d9a5f9a34 19dc2223940d62f2ecfa7325636d742a9cb1586a Nhlonipho <nkmarwala@gmail.com> 1680645891 +0400	commit: Boundary Value Analysis testing complete
+	19dc2223940d62f2ecfa7325636d742a9cb1586a 10b12e356243c97ac673ba6cd787eb82ed7e9af6 Nhlonipho <nkmarwala@gmail.com> 1680646082 +0400	commit (merge): Integrating BVA into main
+	10b12e356243c97ac673ba6cd787eb82ed7e9af6 7e2bd4d962287190c74f739e4a2ab4f7ba72cf3c Nhlonipho <nkmarwala@gmail.com> 1680685930 +0400	commit: finalise program
+	7e2bd4d962287190c74f739e4a2ab4f7ba72cf3c 3e38c9144a84fbd06b099c14ee9a76ea476b573a Nhlonipho <nkmarwala@gmail.com> 1680685949 +0400	checkout: moving from BVAtesting to master
+	3e38c9144a84fbd06b099c14ee9a76ea476b573a 7e2bd4d962287190c74f739e4a2ab4f7ba72cf3c Nhlonipho <nkmarwala@gmail.com> 1680686039 +0400	merge BVAtesting: Fast-forward
+	7e2bd4d962287190c74f739e4a2ab4f7ba72cf3c 488a7e0b65c8483f316b483ecb0119dcdbd46f32 Nhlonipho <nkmarwala@gmail.com> 1680686316 +0400	commit: Assignment code completed
+	488a7e0b65c8483f316b483ecb0119dcdbd46f32 709f3c0a93c51eb3027891d60ed720507e162080 Nhlonipho <nkmarwala@gmail.com> 1680717702 +0400	commit: last commit
+### Graph of commits
+	* commit 709f3c0a93c51eb3027891d60ed720507e162080 (HEAD -> master)
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Wed Apr 5 22:01:42 2023 +0400
+	|
+	|     last commit
+	|
+	* commit 488a7e0b65c8483f316b483ecb0119dcdbd46f32
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Wed Apr 5 13:18:36 2023 +0400
+	|
+	|     Assignment code completed
+	|
+	* commit 7e2bd4d962287190c74f739e4a2ab4f7ba72cf3c
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Wed Apr 5 13:12:10 2023 +0400
+	|
+	|     finalise program
+	|
+	*   commit 10b12e356243c97ac673ba6cd787eb82ed7e9af6
+	|\  Merge: 19dc222 3e38c91
+	| | Author: Nhlonipho <nkmarwala@gmail.com>
+	| | Date:   Wed Apr 5 02:08:02 2023 +0400
+	| |
+	| |     Integrating BVA into main
+	| |
+	| * commit 3e38c9144a84fbd06b099c14ee9a76ea476b573a
+	| | Author: Nhlonipho <nkmarwala@gmail.com>
+	| | Date:   Wed Apr 5 01:42:38 2023 +0400
+	| |
+	| |     finalising EP & WB
+	| |
+	| * commit de25ec12bb7a1c04e5d5f85abf42bde80b0987f6
+	| | Author: Nhlonipho <nkmarwala@gmail.com>
+	| | Date:   Wed Apr 5 01:39:18 2023 +0400
+	| |
+	| |     making running proccess clearer
+	| |
+	| *   commit 2b81d7fdd9e1a0dfd20c73b74c7cdcef61c1563e
+	| |\  Merge: 717d9a6 8007268
+	| | | Author: Nhlonipho <nkmarwala@gmail.com>
+	| | | Date:   Wed Apr 5 01:18:35 2023 +0400
+	| | |
+	| | |     merge fixxes for EPtesting and WBtesting
+	| | |
+	| | * commit 8007268f3e2a05dcf129059499b0632dd7716c1f
+	| | | Author: Nhlonipho <nkmarwala@gmail.com>
+	| | | Date:   Tue Apr 4 20:06:31 2023 +0400
+	| | |
+	| | |     Equivilance Partitioning testing complete
+	| | |
+	| * | commit 717d9a67a595655165a32b614bbd38fd5f07c3b4
+	| | | Author: Nhlonipho <nkmarwala@gmail.com>
+	| | | Date:   Wed Apr 5 01:09:53 2023 +0400
+	| | |
+	| | |     White Box testing completed
+	| | |
+	| * | commit 33afe75cc63e560af4af007392110fed9776d057
+	| | | Author: Nhlonipho <nkmarwala@gmail.com>
+	| | | Date:   Tue Apr 4 21:34:05 2023 +0400
+	| | |
+	| | |     creating test file
+	| | |
+	| * | commit f541affa7746e53d4f7441387ffd8d1039f3b215
+	| |/  Author: Nhlonipho <nkmarwala@gmail.com>
+	| |   Date:   Tue Apr 4 21:29:58 2023 +0400
+	| |
+	| |       edits
+	| |
+	* | commit 19dc2223940d62f2ecfa7325636d742a9cb1586a
+	|/  Author: Nhlonipho <nkmarwala@gmail.com>
+	|   Date:   Wed Apr 5 02:04:51 2023 +0400
+	|
+	|       Boundary Value Analysis testing complete
+	|
+	* commit b429f8475745531ce1f3719630f7fc0d9a5f9a34
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Sun Apr 2 20:28:33 2023 +0400
+	|
+	|     making comments
+	|
+	* commit 3808b66458f014189efb77f2060b38698df01199
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Sun Apr 2 20:17:58 2023 +0400
+	|
+	|     tting up loose ends
+	|
+	* commit 552aab75245e5f64459d6900e38a308024aa0001
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Sun Apr 2 19:54:20 2023 +0400
+	|
+	|     get grade function completed
+	|
+	* commit 6824357177f9fd06dc1006d9a7d0c154d1f62436
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Tue Mar 21 19:19:38 2023 +0400
+	|
+	|     succesfully implemented functions {d, e, f}
+	|
+	* commit 3398c8aa370632b0ea1da39f1984cbb2f2e58311
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Tue Mar 21 18:25:28 2023 +0400
+	|
+	|     succesfully implemented functions {a, b, and c}
+	|
+	* commit ce4a6bf6a51783765d603700ea62ee0daed6459d
+	  Author: Nhlonipho <nkmarwala@gmail.com>
+	  Date:   Tue Mar 21 17:23:00 2023 +0400
 
+	      initial commit
+	(END)
+	| * | commit 717d9a67a595655165a32b614bbd38fd5f07c3b4
+	| | | Author: Nhlonipho <nkmarwala@gmail.com>
+	| | | Date:   Wed Apr 5 01:09:53 2023 +0400
+	| | |
+	| | |     White Box testing completed
+	| | |
+	| * | commit 33afe75cc63e560af4af007392110fed9776d057
+	| | | Author: Nhlonipho <nkmarwala@gmail.com>
+	| | | Date:   Tue Apr 4 21:34:05 2023 +0400
+	| | |
+	| | |     creating test file
+	| | |
+	| * | commit f541affa7746e53d4f7441387ffd8d1039f3b215
+	| |/  Author: Nhlonipho <nkmarwala@gmail.com>
+	| |   Date:   Tue Apr 4 21:29:58 2023 +0400
+	| |
+	| |       edits
+	| |
+	* | commit 19dc2223940d62f2ecfa7325636d742a9cb1586a
+	|/  Author: Nhlonipho <nkmarwala@gmail.com>
+	|   Date:   Wed Apr 5 02:04:51 2023 +0400
+	|
+	|       Boundary Value Analysis testing complete
+	|
+	* commit b429f8475745531ce1f3719630f7fc0d9a5f9a34
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Sun Apr 2 20:28:33 2023 +0400
+	|
+	|     making comments
+	|
+	* commit 3808b66458f014189efb77f2060b38698df01199
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Sun Apr 2 20:17:58 2023 +0400
+	|
+	|     tting up loose ends
+	|
+	* commit 552aab75245e5f64459d6900e38a308024aa0001
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Sun Apr 2 19:54:20 2023 +0400
+	|
+	|     get grade function completed
+	|
+	* commit 6824357177f9fd06dc1006d9a7d0c154d1f62436
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Tue Mar 21 19:19:38 2023 +0400
+	|
+	|     succesfully implemented functions {d, e, f}
+	|
+	* commit 3398c8aa370632b0ea1da39f1984cbb2f2e58311
+	| Author: Nhlonipho <nkmarwala@gmail.com>
+	| Date:   Tue Mar 21 18:25:28 2023 +0400
+	|
+	|     succesfully implemented functions {a, b, and c}
+	|
+	* commit ce4a6bf6a51783765d603700ea62ee0daed6459d
+	  Author: Nhlonipho <nkmarwala@gmail.com>
+	  Date:   Tue Mar 21 17:23:00 2023 +0400
+
+	      initial commit
+	~
+	(END)
 ***
 ## Ethics
-
+The production of a math module can have some ethical concernes and in a few scenarios, the unethical developement of the program could lead to desasters. 
 ***
 ## Reflection
+This assignment helped in developing my familiarity with version control
